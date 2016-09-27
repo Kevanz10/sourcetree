@@ -1,0 +1,25 @@
+{
+  "name": "parking",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://kevanz10@github.com/Kevanz10/sourcetree.git"
+  },
+  "keywords": [
+    "parking"
+  ],
+  "author": "Kevin Rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kevanz10/sourcetree/issues"
+  },
+  "homepage": "https://github.com/Kevanz10/sourcetree#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
