@@ -4,6 +4,7 @@ var connect = require('gulp-connect');
 var sass = require('gulp-sass');
 
 var paths = {
+  html: 'www/*.html',
   sassinput: 'www/app/core/theme/app.scss',
   appAllSass: 'www/**/**/*.scss',
   sassoutput: 'www/app/core/theme/'
@@ -33,15 +34,20 @@ gulp.task('sass', function () {
     .pipe(connect.reload());
 });
 
+//task for html asunchronous changes
+gulp.task('html',function(){
+  return gulp.src(paths.html)
+  .pipe(connect.reload());
+});
 
-//task for asynchronous changes
+//task for sccs asynchronous changes
 
 gulp.task('watch',function(){
   //primer parametro es la ruta archivos a escuchar
   // el segundo parametro para ejecutar una tarea.
   gulp.watch(paths.appAllSass,['sass']);
-
+  gulp.watch(paths.html,['html']);
 });
 
 //default tasks
-gulp.task('default', ['sass','webserver']);
+gulp.task('default', ['watch','sass','webserver', 'html']);
