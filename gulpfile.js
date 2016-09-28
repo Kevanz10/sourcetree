@@ -5,6 +5,7 @@ var sass = require('gulp-sass');
 
 var paths = {
   sassinput: 'www/app/core/theme/app.scss',
+  appAllSass: 'www/**/**/*.scss',
   sassoutput: 'www/app/core/theme/'
 };
 // Local server
@@ -20,11 +21,26 @@ gulp.task('webserver',function() {
 });
 
 //Task responsible of converting sass to css files.
+var sassOptions = {
+  outputStyle: 'compressed',
+  errLogToConsole: true
+}
 
 gulp.task('sass', function () {
   return gulp.src(paths.sassinput)
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(paths.sassoutput));
+    .pipe(sass(sassOptions).on('error', sass.logError))
+    .pipe(gulp.dest(paths.sassoutput))
+    .pipe(connect.reload());
+});
+
+
+//task for asynchronous changes
+
+gulp.task('watch',function(){
+  //primer parametro es la ruta archivos a escuchar
+  // el segundo parametro para ejecutar una tarea.
+  gulp.watch(paths.appAllSass,['sass']);
+
 });
 
 //default tasks
